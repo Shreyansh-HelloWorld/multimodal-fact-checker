@@ -2,7 +2,7 @@
 
 An advanced, AI-powered tool designed to verify the authenticity of information across multiple formats, including text and images. This project leverages a state-of-the-art hybrid architecture to provide nuanced and reliable fact-checking for complex, real-world scenarios.
 
-**[➡️ Add Your Live Streamlit Demo Link Here]**
+**[➡️](https://multimodal-fact-checker-wpd9txbxu9rdqrmxalo6bc.streamlit.app/)]**
 
 ---
 
