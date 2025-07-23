@@ -1,0 +1,11 @@
+transformers
+torch
+requests
+python-dotenv
+google-search-results
+streamlit
+scikit-learn
+groq
+Pillow
+easyocr
+numpy
