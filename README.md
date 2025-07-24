@@ -1,51 +1,40 @@
 # 🔎 Multimodal Fact-Checker Engine
 
-An advanced, AI-powered tool designed to verify the authenticity of information across multiple formats, including text and images. This project leverages a state-of-the-art hybrid architecture to provide nuanced and reliable fact-checking for complex, real-world scenarios.
+A sophisticated, AI-powered tool designed to verify the authenticity of information across multiple formats, including text and images. This project leverages a state-of-the-art hybrid architecture to provide nuanced and reliable fact-checking for real-world scenarios.
 
-**[➡️Fact Checker Engine Link](https://multimodal-fact-checker-wpd9txbxu9rdqrmxalo6bc.streamlit.app/)]**
+**[➡️ Live Demo Link Here]** *(You will get this link after deploying to Streamlit Community Cloud)*
 
 ---
 
-## Key Skills Demonstrated
+## Key Features
 
-This project showcases a comprehensive skill set relevant for Data Scientist, Data Analyst, and Machine Learning Engineer roles.
+* **Multimodal Input:** Analyze claims from both plain text and images.
+* **Text Analysis Pipeline:**
+    * **Claim Extraction:** Automatically identifies and separates individual, verifiable claims from a block of text.
+    * **Evidence-Based Verification:** Searches the web for real-time evidence to support or refute each claim.
+    * **Dual-Engine Verification:** Uses a combination of a fine-tuned NLI model (DeBERTa) and an LLM (LLaMA-3 via Groq) for robust analysis.
+* **Image Analysis Pipeline:**
+    * **Image Captioning:** Generates a textual description of the image's content using the BLIP model.
+    * **Optical Character Recognition (OCR):** Extracts and analyzes any text present within an image using EasyOCR.
+    * **Manipulation Detection:** Classifies images as "Real," "Fake," or "Uncertain" using a Vision Transformer model.
+    * **Reverse Image Search:** Scours the internet to find the image's online history, context, and origin.
+* **Advanced AI Reasoning:**
+    * Employs a final **"Signals & Synthesis"** architecture. This hybrid model uses deterministic Python code to find critical "signals" (like contradictions or evidence of a hoax) and feeds them to a powerful LLM to synthesize a final, nuanced, multi-axis verdict.
 
-* **Data Science & Machine Learning**
-    * **End-to-End Project Lifecycle:** From problem definition and data gathering (web scraping, APIs) to model integration and deployment.
-    * **Model Integration:** Applied multiple pre-trained models for various tasks, including classification, text generation, and object detection.
-    * **Hybrid AI Systems:** Designed and built a sophisticated reasoning engine that combines deterministic code (signal extraction) with LLM-based synthesis for robust, reliable outputs.
+## Architecture Overview
 
-* **Natural Language Processing (NLP)**
-    * **Claim Extraction & Stance Detection:** Deployed models to deconstruct text and determine the stance of evidence.
-    * **Text Preprocessing & Cleaning:** Implemented logic to clean and standardize text from various sources (e.g., OCR).
-    * **Prompt Engineering:** Developed a multi-step "chain-of-thought" and "debate" style reasoning framework to guide LLM behavior for complex analytical tasks.
+The project's core is the **"Signals & Synthesis"** reasoning engine. This advanced, hybrid architecture was developed to overcome the limitations of purely AI-based analysis.
 
-* **Computer Vision (CV)**
-    * **Image Captioning:** Used the BLIP model to generate contextual descriptions of images.
-    * **Optical Character Recognition (OCR):** Deployed EasyOCR to extract textual information from images.
-    * **Manipulation Detection:** Applied a Vision Transformer (ViT) to classify images as authentic or AI-generated.
-    * **Reverse Image Search:** Integrated with external APIs (SerpApi, ImgBB) to gather contextual data and online history for images.
-
-* **MLOps & Tooling**
-    * **Application Development:** Built and deployed a fully interactive web application using **Streamlit**.
-    * **Environment Management:** Managed a complex environment with specific Python versions (`venv`) and dependencies (`requirements.txt`).
-    * **API Integration:** Worked with multiple third-party APIs (Groq, SerpApi, ImgBB) and handled data securely.
-    * **Version Control & Deployment:** Prepared the project for deployment with `git` and `.gitignore`, with a clear path to hosting on Streamlit Community Cloud.
-
-## Architecture: The "Signals & Synthesis" Engine
-
-The core of this project is a hybrid reasoning engine designed to be more reliable than a purely AI-based approach.
-
-1.  **Evidence Gathering:** The system runs a suite of specialized modules (OCR, Reverse Image Search, Pixel Authenticity, etc.) to gather all possible evidence.
-2.  **Programmatic Signal Extraction:** Crucially, it then uses reliable Python code to scan this evidence for high-priority, deterministic "signals" (e.g., keywords like "hoax," "photoshop," or explicit refutations like "didn't die").
-3.  **AI-Powered Synthesis:** Finally, these reliable signals are passed, along with the raw evidence, to an LLM. The AI's job is not to *find* the contradiction, but to *synthesize* and *explain* the conclusion that the signals already point to.
+1.  **Evidence Gathering:** The system first runs a suite of specialized modules to gather all possible evidence (OCR, Reverse Image Search, Pixel Authenticity, etc.).
+2.  **Programmatic Signal Extraction:** Crucially, it then uses reliable, deterministic Python code to scan this evidence for high-priority signals (e.g., keywords like "hoax," "photoshop," or explicit refutations like "didn't die").
+3.  **AI-Powered Synthesis:** Finally, these reliable signals are passed, along with the raw evidence, to an LLM. The AI's job is not to find the truth, but to synthesize the pre-processed signals and evidence into a high-quality, human-readable explanation and a structured verdict.
 
 This approach combines the reliability of code with the nuanced language skills of an AI, creating a system that is both intelligent and robust.
 
 ## Tech Stack
 
 * **Backend:** Python 3.11
-* **Application Framework:** Streamlit
+* **Frontend:** Streamlit
 * **AI Models & Libraries:**
     * **LLM Provider:** Groq (LLaMA-3 8B)
     * **Transformers:** Hugging Face
@@ -53,10 +42,10 @@ This approach combines the reliability of code with the nuanced language skills 
     * **Manipulation Detection:** Vision Transformer (ViT)
     * **OCR:** EasyOCR
     * **NLI (Text):** DeBERTa
-* **Core Tools:** Pillow, OpenCV, Requests, NumPy
-* **Web APIs:** SerpApi, ImgBB
+* **Core Tools:** Pillow, OpenCV, Requests
+* **Web Search:** SerpApi, ImgBB
 
-## Local Setup and Installation
+## Setup and Installation
 
 **1. Clone the repository:**
 ```bash
@@ -68,7 +57,7 @@ cd multimodal-fact-checker
 *This project requires Python 3.11.*
 ```bash
 python3.11 -m venv venv
-source ven /bin/activate
+source venv/bin/activate
 ```
 
 **3. Install dependencies:**
